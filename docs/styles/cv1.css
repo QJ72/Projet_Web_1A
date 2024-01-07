@@ -1,0 +1,32 @@
+* {
+    font-family: 'Times New Roman';
+    font-style: normal;
+    text-align: center;
+}
+
+body {
+    background-color:grey;
+}
+header {
+    color:whitesmoke;
+}
+
+h1{
+    color:cyan;
+}
+
+a {
+    color:blueviolet;
+}
+
+p {
+    color:lightskyblue;
+}
+
+time {
+    color:aqua;
+}
+
+.cobarde {
+    color:aquamarine;
+}
