@@ -16,13 +16,22 @@
 	<h1>TP3-1</h1>
    <div class="canva">
 		<canvas id="canvaimage" width="512" height="256"> 
-			Ne supporte pas canvas.
+		<script>
+			var paysage = new Image() ;
+			paysage.src = "./images/paysage.jpg" ;
+			paysage.alt = "paysage" ;
+			paysage.addEventListener('load', imageLoaded, false);
+			var cv = document.getElementById("canva");
+			var ctx = cv.getContext("2d");
+			function imageLoaded(evt) { ctx.drawImage(paysage,216,123); }
+			imageLoaded('load');
+		</script>
 		</canvas>
 	</div>
 	<div id="stop_clic">Start/Stop</div>
 	<p> <a href="https://qj72.github.io/Projet_Web_1A/projet.html">lien vers projet</a>
 		<script type="text/javascript">
-			
+
 		</script>
 	</p>
 </body>
