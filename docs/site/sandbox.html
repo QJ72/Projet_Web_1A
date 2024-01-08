@@ -67,16 +67,35 @@
 				/*
 				setInterval(ctx.drawImage(paysage, 40, 40, 40, 40, 0, 0, 40, 40), 100);
 				*/
-				setInterval(animation, 40);
+				intervalID = setInterval(animation, 40);
 			}
-
 
 		</script>
 	</div>
-	<div id="stop_clic">Start/Stop</div>
+	<form>
+		<input
+		  type="button"
+		  id="stop_clic"
+		  value="Stop" />
+	</form>
+	<script>
+
+	var btn = document.querySelector("input");
+	btn.addEventListener("click", updateBtn);
+	function updateBtn(){
+		if (btn.value === "Stop") {
+    		btn.value="Start"
+			clearInterval(intervalID);
+			intervalID = null;
+  		} else {
+    		btn.value = "Stop";
+			intervalID = setInterval(animation, 40);
+  		}
+	}
+		</script>
+
 	<p> <a href="https://qj72.github.io/Projet_Web_1A/projet.html">lien vers projet</a>
 		<script type="text/javascript">
-
 		</script>
 	</p>
 	<h1>Projet : </h1>

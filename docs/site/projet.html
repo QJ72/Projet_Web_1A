@@ -12,20 +12,67 @@
    </style>
    <script type="text/javascript" src="tools/sprites.js"></script>
 </head>
-<body>
+<body onload="main() ;">
+	<h1>Animation basique</h1>
    <div class="canva">
 		<canvas id="canvanim" width="512" height="256"> 
-			Ne supporte pas canvas.
+			Ne supporte pas canvas
 		</canvas>
-	</div>
-	<div id="stop_clic">Start/Stop</div>
-<script type="text/javascript">
-	// Contexte graphique
-	
-	// Animation basique
-	
-   // lier stop_clic à l'animation
-  
-</script>
+	<script>
+
+		// Contexte graphique
+		var paysage = new Image();
+		paysage.src = "./images/chat.png";
+		paysage.alt = "chat";
+
+		var cv = document.getElementById("canvanim");
+		var ctx = cv.getContext("2d");
+
+		// Animation basique
+		i = 1;
+		function animation() {
+
+			var hauteur_chat = paysage.height / 4;
+			var longueur_chat = paysage.width / 2;
+			var mouvementX = [0, longueur_chat, 0, longueur_chat, 0, longueur_chat, 0, longueur_chat];
+			var mouvementY = [0, 0, hauteur_chat, hauteur_chat, 2 * hauteur_chat, 2 * hauteur_chat, 3 * hauteur_chat, 3 * hauteur_chat];
+			ctx.clearRect(0, 0, 512, 256);
+			ctx.drawImage(paysage, mouvementX[i], mouvementY[i], 2 * hauteur_chat, longueur_chat, 0, 0, 2 * hauteur_chat, longueur_chat);
+
+			i = i + 1;
+			if (i == 8) {
+				i = 0;
+			}
+		}
+
+		function main() {
+				intervalID = setInterval(animation, 40);
+			}
+	</script>
+</div>
+
+<form>
+	<input
+	  type="button"
+	  id="stop_clic"
+	  value="Stop" />
+</form>
+<script>
+
+	var btn = document.querySelector("input");
+	btn.addEventListener("click", updateBtn);
+	function updateBtn(){
+		if (btn.value === "Stop") {
+			btn.value="Start"
+			clearInterval(intervalID);
+			intervalID = null;
+		} else {
+			btn.value = "Stop";
+			intervalID = setInterval(animation, 40);
+		}
+	}
+	</script>
+
 </body>
+
 </html>
