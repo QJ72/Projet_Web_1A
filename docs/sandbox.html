@@ -12,7 +12,7 @@
    </style>
    <script type="text/javascript" src="tools/sprites.js"></script>
 </head>
-<body>
+<body onload="main() ;">
 	<h1>TP3-1</h1>
    <div class="canva">
 		<canvas id="canvaimage" width="512" height="256"> 
@@ -22,11 +22,14 @@
 			var paysage = new Image() ;
 			paysage.src = "./images/sheeppoe.png" ;
 			paysage.alt = "paysage" ;
-			paysage.addEventListener('load', imageLoaded, false);
+			function main(){
 			var cv = document.getElementById("canvaimage");
 			var ctx = cv.getContext("2d");
-			function imageLoaded(evt) { ctx.drawImage(paysage,canvaimage.width - paysage.width/16 , canvaimage.height- paysage.height/8 ); }
-			imageLoaded('load');
+			// ctx.drawImage(paysage,canvaimage.width - paysage.width/16 , canvaimage.height- paysage.height/8) ;
+			ctx.drawImage(paysage, 0, 0, 40, 40, 0, 0, 40, 40) ;
+			
+			ctx.drawImage(paysage, 80, 0, 40, 40, 0, 0, 40, 40) ;
+			}
 		</script>
 	</div>
 	<div id="stop_clic">Start/Stop</div>

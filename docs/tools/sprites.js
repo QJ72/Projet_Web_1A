@@ -91,8 +91,13 @@ CanvasSprite.prototype.stopAnim = function()
 
 //création de la classe CanvasSprite
 
-class CanvasSprite {
+class canvasSprite {
     constructor(canva) {
         
     }
+}
+
+
+function anim(image, timer){
+   
 }
