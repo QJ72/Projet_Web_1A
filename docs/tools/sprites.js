@@ -5,7 +5,10 @@
 // ctx : contexte graphique
 function canvasImage(imgURL,posX,posY,ctx)
 {
-	
+    var image = new Image() ;
+    image.src = "imgURL" ;
+    image.width = Math.abs( ctx.height - posX)
+    image.height = Math.abs( ctx.width - posY)
 }
 // -----------------------------------------------------------------------------------
 // Dessine l'image sur le canvas
