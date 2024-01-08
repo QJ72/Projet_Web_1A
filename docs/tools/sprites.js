@@ -91,13 +91,16 @@ CanvasSprite.prototype.stopAnim = function()
 
 //création de la classe CanvasSprite
 
-class canvasSprite {
-    constructor(canva) {
-        
+function anim(image, timer, nbXTiles, nbYTiles,ctx){
+   var l = 0 ;
+   var h = 0 ;
+   while (h < image.height) {
+        while(l< image.width) {
+            setTimeout(ctx.drawImage(image, l, h, image.width / nbXTiles, image.height / nbYTiles, 0, 0, image.width / nbXTiles, image.height / nbYTiles), timer) ;
+            l = l + image.width / nbXTiles ;
+        }
+        l = 0 ;
+        h = h + image.height / nbYTiles ;
+        if (h = image.height) { h = 0 ; }
     }
-}
-
-
-function anim(image, timer){
-   
 }

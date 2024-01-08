@@ -26,9 +26,7 @@
 			var cv = document.getElementById("canvaimage");
 			var ctx = cv.getContext("2d");
 			// ctx.drawImage(paysage,canvaimage.width - paysage.width/16 , canvaimage.height- paysage.height/8) ;
-			ctx.drawImage(paysage, 0, 0, 40, 40, 0, 0, 40, 40) ;
-			
-			ctx.drawImage(paysage, 80, 0, 40, 40, 0, 0, 40, 40) ;
+			anim(paysage, 500, 16, 8, ctx) ;
 			}
 		</script>
 	</div>
