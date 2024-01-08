@@ -20,12 +20,12 @@
 		</canvas>
 		<script>
 			var paysage = new Image() ;
-			paysage.src = "./images/paysage.jpg" ;
+			paysage.src = "./images/sheeppoe.png" ;
 			paysage.alt = "paysage" ;
 			paysage.addEventListener('load', imageLoaded, false);
 			var cv = document.getElementById("canvaimage");
 			var ctx = cv.getContext("2d");
-			function imageLoaded(evt) { ctx.drawImage(paysage,0,0); }
+			function imageLoaded(evt) { ctx.drawImage(paysage,canvaimage.width - paysage.width/16 , canvaimage.height- paysage.height/8 ); }
 			imageLoaded('load');
 		</script>
 	</div>
@@ -35,5 +35,7 @@
 
 		</script>
 	</p>
+	<h1>Projet : </h1>
+
 </body>
 </html>

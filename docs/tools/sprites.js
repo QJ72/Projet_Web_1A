@@ -5,10 +5,11 @@
 // ctx : contexte graphique
 function canvasImage(imgURL,posX,posY,ctx)
 {
-    var image = new Image() ;
+    var image = new Image() ;   
     image.src = "imgURL" ;
-    image.width = Math.abs( ctx.height - posX)
-    image.height = Math.abs( ctx.width - posY)
+    image.width = Math.abs( ctx.height - posX) ;
+    image.height = Math.abs( ctx.width - posY) ;
+    return image ;
 }
 // -----------------------------------------------------------------------------------
 // Dessine l'image sur le canvas
@@ -16,7 +17,9 @@ function canvasImage(imgURL,posX,posY,ctx)
 // (posX,posY) : position du coin supérieur gauche de l'image dans le canvas
 function drawCanvasImage(image,posX,posY)
 {
-
+    var cv = document.getElementById("canvasImage");
+    var ctx = cv.getContext("2d");
+    ctx.drawImage(image, posX, posY0);
 }
 // ===================================================================================
 // Constructeur for an animation object
@@ -26,9 +29,13 @@ function drawCanvasImage(image,posX,posY)
 // nbXTiles : nombre de tiles horizontalement
 // nbYTiles : nombre de tiles verticallement
 // loop : animation en boucle (true) ou non (false)
-function CanvasSprite(spriteImgURL, x, y, widthTile, heightTile, nbXTiles, nbYTiles,ctx)
+function CanvasSprite(image, x, y, widthTile, heightTile, nbXTiles, nbYTiles,ctx)
 {
-   
+   image.nbXTiles = nbXTiles ;
+   image.nbYTiles = nbYTiles ;
+   image.widthTile = widthTile ;
+   image.heightTile = heightTile ;
+   image.loop = true ;
 }
 // -----------------------------------------------------------------------------------
 // Ajout d'une animation spécifique
@@ -81,3 +88,11 @@ CanvasSprite.prototype.stopAnim = function()
 	
 }
 // ----------------------------------------------------------------------------------
+
+//création de la classe CanvasSprite
+
+class CanvasSprite {
+    constructor(canva) {
+        
+    }
+}
