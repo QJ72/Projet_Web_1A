@@ -1,34 +1,76 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Projet Conception Site Web - 1A Info</title>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-	<link rel="stylesheet" href="tools/normalize.css"/>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" href="tools/normalize.css" />
 	<style type="text/css">
-     * { text-align: center; }
-     .canva { width: 512px; height: 256px; border-width: 2px; border-style: solid; margin-left: auto; margin-right: auto;}
-     #stop_clic:hover { font-variant: small-caps; cursor: pointer; }
-   </style>
-   <script type="text/javascript" src="tools/sprites.js"></script>
+		* {
+			text-align: center;
+		}
+
+		.canva {
+			width: 512px;
+			height: 256px;
+			border-width: 2px;
+			border-style: solid;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		#stop_clic:hover {
+			font-variant: small-caps;
+			cursor: pointer;
+		}
+	</style>
+	<script type="text/javascript" src="tools/sprites.js"></script>
 </head>
+
 <body onload="main() ;">
 	<h1>TP3-1</h1>
-   <div class="canva">
-		<canvas id="canvaimage" width="512" height="256"> 
+	<div class="canva">
+		<canvas id="canvaimage" width="512" height="256">
 			Ne supporte pas canvas.
 		</canvas>
 		<script>
-			var paysage = new Image() ;
-			paysage.src = "./images/sheeppoe.png" ;
-			paysage.alt = "paysage" ;
-			function main(){
+			var paysage = new Image();
+			paysage.src = "./images/chat.png";
+			paysage.alt = "paysage";
+
 			var cv = document.getElementById("canvaimage");
 			var ctx = cv.getContext("2d");
-			// ctx.drawImage(paysage,canvaimage.width - paysage.width/16 , canvaimage.height- paysage.height/8) ;
-			anim(paysage, 500, 16, 8, ctx) ;
+			i = 1;
+
+			function animation() {
+
+				var hauteur_chat = paysage.height / 4;
+				var longueur_chat = paysage.width / 2;
+				var mouvementX = [0, longueur_chat, 0, longueur_chat, 0, longueur_chat, 0, longueur_chat];
+				var mouvementY = [0, 0, hauteur_chat, hauteur_chat, 2 * hauteur_chat, 2 * hauteur_chat, 3 * hauteur_chat, 3 * hauteur_chat];
+				ctx.clearRect(0, 0, 512, 256);
+				ctx.drawImage(paysage, mouvementX[i], mouvementY[i], 2 * hauteur_chat, longueur_chat, 0, 0, 2 * hauteur_chat, longueur_chat);
+
+				i = i + 1;
+				if (i == 8) {
+					i = 0;
+				}
+
 			}
-			main ;
+
+
+
+
+
+			function main() {
+				/*
+				setInterval(ctx.drawImage(paysage, 40, 40, 40, 40, 0, 0, 40, 40), 100);
+				*/
+				setInterval(animation, 40);
+			}
+
+
 		</script>
 	</div>
 	<div id="stop_clic">Start/Stop</div>
@@ -40,4 +82,5 @@
 	<h1>Projet : </h1>
 
 </body>
+
 </html>
