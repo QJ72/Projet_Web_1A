@@ -18,6 +18,16 @@
 		<canvas id="canvaimage" width="512" height="256"> 
 			Ne supporte pas canvas.
 		</canvas>
+		<script>
+			var paysage = new Image() ;
+			paysage.src = "./images/paysage.jpg" ;
+			paysage.alt = "paysage" ;
+			paysage.addEventListener('load', imageLoaded, false);
+			var cv = document.getElementById("canvaimage");
+			var ctx = cv.getContext("2d");
+			function imageLoaded(evt) { ctx.drawImage(paysage,0,0); }
+			imageLoaded('load');
+		</script>
 	</div>
 	<div id="stop_clic">Start/Stop</div>
 	<p> <a href="https://qj72.github.io/Projet_Web_1A/projet.html">lien vers projet</a>
