@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Projet Conception Site Web - 1A Info</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="tools/normalize.css" />
+    <style type="text/css">
+        * {
+            text-align: center;
+        }
+
+        .canva {
+            width: 512px;
+            height: 256px;
+            border-width: 2px;
+            border-style: solid;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #stop_clic:hover {
+            font-variant: small-caps;
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript" src="tools/sprites.js"></script>
+</head>
+
+<body onload="main() ;">
+    <h1>Animation Multiple</h1>
+    <div class="canva">
+        <canvas id="canvaimage" width="512" height="256">
+            Ne supporte pas canvas.
+        </canvas>
+        <script>
+            var image = new Image();
+            image.src = "./images/sheeppoe.png";
+            image.alt = "image";
+
+            var cv = document.getElementById("canvaimage");
+            var ctx = cv.getContext("2d");
+            var i = 0;
+            var y = 0;
+            
+            function animation_mouton() {
+                var hauteur_mouton = image.height / 8;
+                var longueur_mouton = image.width / 16;
+                var mouvementX = [0, longueur_mouton, 2 * longueur_mouton, 3 * longueur_mouton, 4 * longueur_mouton, 5 * longueur_mouton, 6 * longueur_mouton, 7 * longueur_mouton, 8 * longueur_mouton, 9 * longueur_mouton, 10 * longueur_mouton, 11 * longueur_mouton, 12 * longueur_mouton, 13 * longueur_mouton, 14 * longueur_mouton, 15 * longueur_mouton];
+                var mouvementY = [0, hauteur_mouton, 2 * hauteur_mouton, 3 * hauteur_mouton, 4 * hauteur_mouton, 5 * hauteur_mouton, 6 * hauteur_mouton, 7 * hauteur_mouton];
+                ctx.clearRect(0, 0, 512, 256);
+                ctx.drawImage(image, mouvementX[i], mouvementY[y], hauteur_mouton, longueur_mouton, 126, 50, hauteur_mouton * 4, longueur_mouton * 4);
+
+
+
+                i = i + 1;
+                if (i == 16) {
+                    i = 0;
+                    y = y + 1;
+                    if (y == 8) {
+                        y = 0;
+                    }
+                }
+            }
+
+
+
+
+            function main() {
+                /*
+                setInterval(animation_chat, 40);
+                */
+                intervalID = setInterval(animation_mouton, 200);
+            }
+
+
+        </script>
+    </div>
+    <form>
+        <input
+          type="button"
+          id="stop_clic"
+          value="Stop" />
+    </form>
+    <script>
+
+        var btn = document.querySelector("input");
+        btn.addEventListener("click", updateBtn);
+        function updateBtn(){
+            if (btn.value === "Stop") {
+                btn.value="Start"
+                clearInterval(intervalID);
+                intervalID = null;
+            } else {
+                btn.value = "Stop";
+                intervalID = setInterval(animation_mouton, 200);
+            }
+        }
+        </script>
+
+</body>
+
+</html>
