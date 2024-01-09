@@ -425,3 +425,10 @@ td,
 th {
   padding: 0;
 }
+
+@media (prefers-color-scheme: dark) {
+	html {
+		background-color: black;
+		color: lightgray;
+	}
+}
